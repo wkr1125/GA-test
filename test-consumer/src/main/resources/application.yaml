@@ -1,0 +1,9 @@
+server:
+  port: 8080
+  servlet:
+    session:
+      timeout: 60s
+spring:
+  mvc:
+    async:
+      request-timeout: 20000
