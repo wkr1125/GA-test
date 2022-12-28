@@ -1,6 +1,6 @@
 package com.example.testprovider;
 
-import com.example.testprovider.bean.CustomErrorHandler;
+import com.example.testprovider.exception.CustomErrorHandler;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
