@@ -33,7 +33,7 @@ public class ConsumerController {
     @PostMapping("/postRequest")
     public String postRequest() {
         HashMap<String, Object> map = new HashMap<>();
-        map.put("id", 1);
+        map.put("id", "2");
         map.put("age", 2);
         return "ConsumerController : " + restTemplate.postForObject("http://localhost:8081/provider/postRequest", map, String.class);
     }
@@ -41,7 +41,7 @@ public class ConsumerController {
     @PutMapping("/putRequest")
     public String putRequest() {
         HashMap<String, Object> map = new HashMap<>();
-        map.put("id", 1);
+        map.put("id", "2");
         map.put("age", 3);
         restTemplate.put("http://localhost:8081/provider/putRequest", map, String.class);
         return "putRequest";

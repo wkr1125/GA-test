@@ -3,6 +3,7 @@ package com.example.testprovider.controller;
 import com.example.testprovider.service.ProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -27,8 +28,12 @@ public class ProviderController {
     }
 
     @PostMapping("/postRequest")
-    public String postRequest(@RequestBody Map<String,Object> map) {
+    public String postRequest(@RequestBody Map<String,Object> map) throws Exception {
         System.out.println(map);
+        String a = (String) map.get("id");
+        if ("1".equals(a)){
+            throw new Exception();
+        }
         return providerService.postRequest();
     }
 
