@@ -16,7 +16,7 @@ import java.util.Map;
  * @Copyright ©
  */
 @RestController
-@RequestMapping("/provider")
+@RequestMapping("/consumer")
 public class ConsumerController {
 
     @Autowired
