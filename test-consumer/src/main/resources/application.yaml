@@ -1,9 +1,6 @@
 server:
-  port: 8080
-  servlet:
-    session:
-      timeout: 60s
+  port: 8081
 spring:
-  mvc:
-    async:
-      request-timeout: 20000
+  servlet:
+    multipart:
+      max-file-size: 10MB
