@@ -5,10 +5,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
-import org.mockito.Spy;
+import org.mockito.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,8 +22,12 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class ProviderControllerTest {
 
+    @InjectMocks
     @Spy
     ProviderController providerController;
+
+    @Spy
+    ProviderServiceImpl providerService;
 
     @BeforeEach
     void setUp(){
@@ -50,7 +51,7 @@ class ProviderControllerTest {
         } catch (Exception e) {
             Assertions.assertTrue(e instanceof TimeoutException);
         }
-        Assertions.assertEquals("ok",postRequestResult);
+        Assertions.assertEquals("ProviderServiceImpl postRequest",postRequestResult);
     }
 
 }
