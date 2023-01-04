@@ -58,10 +58,10 @@ class TestProviderApplicationTests {
     void userSave() {
 //        jpaUserRepository.save(new User(0,"3","2"));
         List<User> users = new ArrayList<>();
-        users.add(new User(5,"5","5"));
-        users.add(new User(6,"6","6"));
-        users.add(new User(7,"7","7"));
-        users.add(new User(8,"8","8"));
+        users.add(new User(5, "5", "5"));
+        users.add(new User(6, "6", "6"));
+        users.add(new User(7, "7", "7"));
+        users.add(new User(8, "8", "8"));
         jpaUserRepository.saveAll(users);
     }
 
@@ -96,9 +96,25 @@ class TestProviderApplicationTests {
         System.out.println(jpaUserRepository.findByName("5"));
 //        jpaUserRepository.save(new User(0,"3","2"));
     }
+
     @Test
     void userQueryUserName() {
         System.out.println(jpaUserRepository.findByUserName("5"));
 //        jpaUserRepository.save(new User(0,"3","2"));
+    }
+
+    @Test
+    void userQueryUserNameNative() {
+        System.out.println(jpaUserRepository.findByUserNameNative("5"));
+//        jpaUserRepository.save(new User(0,"3","2"));
+    }
+
+    @Test
+    void userQueryUserMethod() {
+        System.out.println(jpaUserRepository.findUsersByIdAfterAndIdBefore(15,18));
+    }
+    @Test
+    void findUsersByUserNameLike() {
+        System.out.println(jpaUserRepository.findUsersByNameLike("%5%"));
     }
 }

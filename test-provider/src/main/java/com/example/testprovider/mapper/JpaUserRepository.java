@@ -29,4 +29,13 @@ public interface JpaUserRepository extends JpaRepository<User, Integer> {
     @Modifying //通知spring data jpa是增删改的操作
     @Query("update t_user set name=:name where id=:id")
     int updateNameById(String name,Integer id);
+
+
+    //具名参数
+    @Query(value = "select * from t_user where user_name=:userName",nativeQuery = true)
+    List<User> findByUserNameNative(String userName);
+
+    List<User> findUsersByIdAfterAndIdBefore(Integer after,Integer before);
+
+    List<User> findUsersByNameLike(String userName);
 }
