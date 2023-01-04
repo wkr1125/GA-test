@@ -4,3 +4,14 @@ spring:
   servlet:
     multipart:
       max-file-size: 10MB
+  # Spring Security Default user name and password
+  security:
+    user:
+      roles: ADMIN
+      name: actuator
+      password: actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include=*:

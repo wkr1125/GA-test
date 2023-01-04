@@ -1,7 +1,6 @@
 package com.example.testprovider.controller;
 
-import com.example.testprovider.service.ConsumerService;
-import com.example.testprovider.service.impl.ConsumerServiceImpl;
+import com.example.testprovider.service.impl.ProviderServiceImpl;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,8 +9,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
-import org.springframework.boot.test.mock.mockito.SpyBean;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeoutException;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,13 +20,13 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author wenkr
  * @version V1.0
  * @Package com.example.testprovider.controller
- * @date 2023/1/3 10:45
+ * @date 2023/1/4 11:55
  * @Copyright ©
  */
-class ConsumerControllerTest {
+class ProviderControllerTest {
 
-    @Mock
-    ConsumerServiceImpl service;
+    @Spy
+    ProviderController providerController;
 
     @BeforeEach
     void setUp(){
@@ -40,21 +40,17 @@ class ConsumerControllerTest {
     }
 
     @Test
-    void getRequest() {
-        //test @Mock
-//        MockitoAnnotations.openMocks(this);
-        Mockito.when(service.getRequest()).thenReturn("Mockito.getRequest");
-//        Mockito.when(service.getRequest()).thenCallRealMethod();
-//        Mockito.when(service.getRequest()).thenThrow(new TimeoutException());
-//        Assertions.assertEquals("1",service.getRequest());
-        Assertions.assertEquals("Mockito.getRequest",service.getRequest());
-    }
-
-    @Test
     void postRequest() {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("id", "2");
+        map.put("age", 2);
+        String postRequestResult = "";
+        try {
+            postRequestResult = providerController.postRequest(map);
+        } catch (Exception e) {
+            Assertions.assertTrue(e instanceof TimeoutException);
+        }
+        Assertions.assertEquals("ok",postRequestResult);
     }
 
-    @Test
-    void putRequest() {
-    }
 }

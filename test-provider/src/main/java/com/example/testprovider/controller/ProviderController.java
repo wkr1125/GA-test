@@ -7,6 +7,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
+import java.util.concurrent.TimeoutException;
 
 /**
  * @author wenkr
@@ -20,7 +21,7 @@ import java.util.Map;
 public class ProviderController {
 
     @Autowired
-    ProviderService providerService;
+    private ProviderService providerService;
 
     @GetMapping("/getRequest")
     public String getRequest(){
@@ -28,11 +29,10 @@ public class ProviderController {
     }
 
     @PostMapping("/postRequest")
-    public String postRequest(@RequestBody Map<String,Object> map) throws Exception {
-        System.out.println(map);
+    public String postRequest(@RequestBody Map<String,Object> map) throws TimeoutException {
         String a = (String) map.get("id");
         if ("1".equals(a)){
-            throw new Exception();
+            throw new TimeoutException();
         }
         return providerService.postRequest();
     }

@@ -1,6 +1,7 @@
 package com.example.testprovider.service.impl;
 
 import com.example.testprovider.service.ConsumerService;
+import com.sun.corba.se.impl.orbutil.threadpool.TimeoutException;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ConsumerServiceImpl implements ConsumerService {
+
     @Override
     public String getRequest() {
         return "getRequest";
