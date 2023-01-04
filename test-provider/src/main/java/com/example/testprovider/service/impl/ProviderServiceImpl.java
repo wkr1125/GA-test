@@ -1,6 +1,8 @@
 package com.example.testprovider.service.impl;
 
+import com.example.testprovider.mapper.JpaUserRepository;
 import com.example.testprovider.service.ProviderService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -14,6 +16,10 @@ import java.util.Map;
  */
 @Service
 public class ProviderServiceImpl implements ProviderService {
+
+    @Autowired
+    private JpaUserRepository jpaUserRepository;
+
     @Override
     public String getRequest() {
         return "ProviderServiceImpl getRequest";
