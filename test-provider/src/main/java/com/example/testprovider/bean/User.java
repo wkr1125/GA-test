@@ -1,36 +1,35 @@
 package com.example.testprovider.bean;
 
+import cn.afterturn.easypoi.excel.annotation.Excel;
+import cn.afterturn.easypoi.excel.annotation.ExcelTarget;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author wenkr
- * @version V1.0
- * @Package com.example.testprovider.bean
- * @date 2023/1/4 14:30
- * @Copyright ©
+ * @date 2023/2/15
+ * @apinote
  */
-@Data
-@Entity(name = "t_user")
+
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+@Data
+@ExcelTarget("users")
+public class User implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    @Excel(name = "编号")
+    private String id;
 
-    @Column(name = "t_name")
+    @Excel(name = "姓名")
     private String name;
 
-    private String userName;
+    @Excel(name = "年龄")
+    private Integer age;
 
-
-    public User(String name, String userName) {
-        this.name = name;
-        this.userName = userName;
-    }
+    @Excel(name = "生日")
+    private Date bir;
 }
